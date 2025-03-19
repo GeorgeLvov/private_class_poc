@@ -19,7 +19,7 @@ public class ReturnReversalController {
   @RequestMapping(method = RequestMethod.GET,
       produces = MediaType.APPLICATION_JSON_VALUE, value = RETURN_REVERSAL_GET)
   @ResponseBody
-  @PreAuthorize("hasAuthority('ROLE_ALTERNATE_PAYMENTS')")
+  @PreAuthorize("hasAuthority('ROLE_USER')")
   public ResponseEntity<GatewayReturnReversalResponse> getReturnReversalById(
       @PathVariable("accountId") String accountId,
       @PathVariable("returnReversalId") UUID returnReversalId) {
