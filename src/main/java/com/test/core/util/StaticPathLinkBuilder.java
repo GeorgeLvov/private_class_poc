@@ -37,8 +37,7 @@ public class StaticPathLinkBuilder extends LinkBuilderSupport<StaticPathLinkBuil
               new IllegalArgumentException("linkTo(Object) must be call with a dummyInvocation");
     }
 
-    LastInvocationAware lastInvocationAware =
-            (LastInvocationAware) dummyInvocation;
+    LastInvocationAware lastInvocationAware = DummyInvocationUtils.getLastInvocationAware(dummyInvocation);
 
     MethodInvocation methodInvocation = lastInvocationAware.getLastInvocation();
 

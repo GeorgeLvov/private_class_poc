@@ -39,8 +39,8 @@ public class ReportingAssemblerReturnReversalTest extends ReportingAssemblerAbst
 
     reportingResource.setReturnReversal(reportingReturnReversalResource);
 
-    when(returnReversalAssembler.fromReturnReversal(any(), any()))
-        .thenReturn(reportingReturnReversalResource);
+//    when(returnReversalAssembler.fromReturnReversal(any(), any()))
+//        .thenReturn(reportingReturnReversalResource);
   }
 
   @Test
