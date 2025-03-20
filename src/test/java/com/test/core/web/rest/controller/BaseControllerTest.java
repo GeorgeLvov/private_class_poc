@@ -7,19 +7,23 @@ import org.apache.commons.validator.routines.UrlValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.restdocs.JUnitRestDocumentation;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 @WebAppConfiguration
 public class BaseControllerTest {
 
-  protected static final String MOCK_MVC_HOST = "http://localhost:8011";
+  // Remove http part and port from here to have it properly documented.
+  // Otherwise you will  have smth like: http://http://localhost:8011:8080/account...
+  protected static final String MOCK_MVC_HOST = "localhost";
+
+  // use port as separate variable
+  protected static final int MOCK_MVC_PORT = 8011;
 
   static {
     System.setProperty("org.jboss.logging.provider", "slf4j");
   }
 
-  public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation("build/generated-snippets");
+  // JUnitRestDocumentation removed
 
   @Mock
   protected UrlValidator urlValidator;

@@ -2,6 +2,8 @@ plugins {
     id 'org.springframework.boot' version '3.4.0'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'java'
+    id 'org.asciidoctor.jvm.convert' version '2.4.0' // add this plugin
+
 }
 
 group = 'com.private.class.poc'
@@ -17,6 +19,7 @@ java {
 
 ext {
     set('springCloudVersion', "2024.0.0")
+    set('snippetsDir', file("build/generated-snippets"))
 }
 
 repositories {
@@ -64,5 +67,11 @@ dependencyManagement {
 }
 
 tasks.named('test') {
+    outputs.dir snippetsDir
     useJUnitPlatform()
+}
+
+tasks.named('asciidoctor') {
+    inputs.dir snippetsDir
+    dependsOn test
 }

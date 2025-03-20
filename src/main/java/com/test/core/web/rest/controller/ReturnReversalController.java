@@ -14,16 +14,24 @@ import java.util.UUID;
 @RestController
 public class ReturnReversalController {
 
-  public static final String RETURN_REVERSAL_GET = "/accounts";
+    // added path variables to url
+    public static final String RETURN_REVERSAL_GET = "/accounts/{accountId}/{returnReversalId}";
 
-  @RequestMapping(method = RequestMethod.GET,
-      produces = MediaType.APPLICATION_JSON_VALUE, value = RETURN_REVERSAL_GET)
-  @ResponseBody
-  @PreAuthorize("hasAuthority('ROLE_USER')")
-  public ResponseEntity<GatewayReturnReversalResponse> getReturnReversalById(
-      @PathVariable("accountId") String accountId,
-      @PathVariable("returnReversalId") UUID returnReversalId) {
-      GatewayReturnReversalResponse response = new GatewayReturnReversalResponse();
-      return new ResponseEntity<>(response, HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE, value = RETURN_REVERSAL_GET)
+    @ResponseBody
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public ResponseEntity<GatewayReturnReversalResponse> getReturnReversalById(
+            @PathVariable("accountId") String accountId,
+            @PathVariable("returnReversalId") UUID returnReversalId) {
+
+        // for logging
+        System.out.println("----");
+        System.out.println(accountId);
+        System.out.println(returnReversalId);
+        System.out.println("----");
+
+        GatewayReturnReversalResponse response = new GatewayReturnReversalResponse();
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
