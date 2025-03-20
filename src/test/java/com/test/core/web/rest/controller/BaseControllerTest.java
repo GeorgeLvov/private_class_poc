@@ -13,6 +13,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @WebAppConfiguration
 public class BaseControllerTest {
 
+  protected static final String MOCK_MVC_HOST = "http://localhost:8011";
+
   static {
     System.setProperty("org.jboss.logging.provider", "slf4j");
   }
